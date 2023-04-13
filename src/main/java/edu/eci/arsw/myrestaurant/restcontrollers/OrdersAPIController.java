@@ -30,11 +30,36 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import edu.eci.arsw.myrestaurant.services.*;;
+
 /**
  *
  * @author hcadavid
  */
+ @RequestMapping(value="/orders")
 public class OrdersAPIController {
+
+    private RestaurantOrderServices ros;
+
+    @RestController
+    @Autowired
+
+    @RequestMapping(value = RequestMethod.GET)
+    public ResponseEntity<?> getAllOrders(){
+        try {
+            return new ResponseEntity(ros.getAllOrder(),HttpStatus.ACCEPTED);
+        } catch (Exception e) {
+            // TODO: handle exception
+
+            return new ResponseEntity<>("Error a traer las ordenes", HttpStatus.NOT_FOUND);
+        }
+
+    }
+
+
+
+
+
 
     
 }
