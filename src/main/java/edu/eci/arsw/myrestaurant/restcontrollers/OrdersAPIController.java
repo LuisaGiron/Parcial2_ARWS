@@ -22,6 +22,7 @@ import edu.eci.arsw.myrestaurant.model.RestaurantProduct;
 import edu.eci.arsw.myrestaurant.services.RestaurantOrderServicesStub;
 import java.util.Hashtable;
 import java.util.Map;
+import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -30,7 +31,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import edu.eci.arsw.myrestaurant.services.*;;
+import edu.eci.arsw.myrestaurant.services.*;
+
 
 /**
  *
@@ -45,13 +47,13 @@ public class OrdersAPIController {
     @Autowired
 
     @RequestMapping(value = RequestMethod.GET)
-    public ResponseEntity<?> getAllOrders(){
+    public Set<Integer> getAllOrders(){
         try {
-            return new ResponseEntity(ros.getAllOrder(),HttpStatus.ACCEPTED);
+            return new Set<Integer>(ros.getTablesWithOrders().,HttpStatus.ACCEPTED);
         } catch (Exception e) {
             // TODO: handle exception
 
-            return new ResponseEntity<>("Error a traer las ordenes", HttpStatus.NOT_FOUND);
+            //return new Set<Integer>("Error a traer las ordenes", HttpStatus.NOT_FOUND);
         }
 
     }
